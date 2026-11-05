@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雙北適合筆電工作與安靜放鬆的貓咖精選 ｜ 雙北貓咖案內所</title>
+
+  <!-- Google Fonts: Noto Serif TC & Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;900&display=swap" rel="stylesheet">
+
+  <!-- KaTeX for LaTeX Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+
+  <style>
+    :root {
+      --bg-mist: #F0F1F2;
+      --surface-white: #FFFFFF;
+      --surface-card: #FAFAFA;
+      --border-subtle: #DDE0E2;
+      --border-dark: #18191A;
+      --text-black: #18191A;
+      --text-charcoal: #4A4E52;
+      --text-muted: #888E94;
+      --accent-tea: #E3E6E2;
+      --accent-tea-text: #3A423B;
+      --font-serif: 'Noto Serif TC', serif;
+      --font-sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-mist);
+      color: var(--text-charcoal);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+      padding-bottom: 80px;
+    }
+
+    .container { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+    .site-nav {
+      border-bottom: 1px solid var(--border-subtle);
+      background-color: rgba(240, 241, 242, 0.94);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 16px 0;
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-black); }
+    .nav-brand-title { font-family: var(--font-serif); font-size: 16px; font-weight: 900; letter-spacing: 0.12em; }
+    .nav-brand-sub { font-size: 10px; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; }
+    .nav-mascot-peek { width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.12)); transform: rotate(-3deg); transition: transform 0.3s ease; }
+    .nav-mascot-peek:hover { transform: rotate(5deg) scale(1.1); }
+
+    .hero { margin-top: 48px; margin-bottom: 40px; position: relative; }
+    .hero-label { display: inline-block; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--text-muted); padding-bottom: 2px; margin-bottom: 16px; }
+    .hero-title-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 16px; }
+    .hero-title { font-family: var(--font-serif); font-size: clamp(30px, 5vw, 42px); font-weight: 900; color: var(--text-black); line-height: 1.3; }
+    .hero-title-en { display: block; font-family: var(--font-sans); font-size: 13.5px; font-weight: 400; color: var(--text-muted); letter-spacing: 0.22em; margin-top: 6px; }
+    .hero-mascot-img { width: 130px; height: auto; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1)); transform: rotate(2deg); flex-shrink: 0; }
+    .hero-desc { font-size: 16px; color: var(--text-charcoal); max-width: 680px; line-height: 1.9; margin-bottom: 24px; }
+
+    /* Formula Panel */
+    .formula-panel {
+      background: var(--surface-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-bottom: 36px;
+    }
+    .formula-title { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; font-weight: 700; }
+    .formula-content { font-size: 14.5px; color: var(--text-black); text-align: center; margin: 12px 0; }
+
+    /* Comparison Table */
+    .table-card {
+      background: var(--surface-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 40px;
+    }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+    th { background: #F8F9FA; padding: 14px 18px; border-bottom: 1px solid var(--border-subtle); font-weight: 600; color: var(--text-black); font-size: 12.5px; letter-spacing: 0.05em; }
+    td { padding: 14px 18px; border-bottom: 1px dashed var(--border-subtle); color: var(--text-charcoal); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background-color: #FAFAFA; }
+
+    /* Curated Section Cards */
+    .curated-card {
+      background: var(--surface-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 32px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .card-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+    .card-rank { font-family: var(--font-serif); font-size: 12px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
+    .card-name { font-family: var(--font-serif); font-size: 24px; font-weight: 900; color: var(--text-black); margin-bottom: 4px; }
+    .card-mrt { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .card-tag { font-size: 11.5px; padding: 2px 8px; background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: 4px; color: var(--text-charcoal); }
+    .card-tag-dark { background: var(--text-black); color: #FFF; border-color: var(--text-black); }
+    .card-body { font-size: 14.5px; line-height: 1.85; color: var(--text-charcoal); margin-bottom: 20px; }
+    .card-action { display: flex; justify-content: flex-end; }
+    .btn-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-black); text-decoration: none; font-weight: 500; padding: 6px 16px; border: 1px solid var(--border-subtle); border-radius: 4px; transition: all 0.2s; }
+    .btn-link:hover { background: var(--text-black); color: #FFF; border-color: var(--text-black); }
+
+    .site-footer { margin-top: 64px; text-align: center; border-top: 1px solid var(--border-subtle); padding-top: 36px; }
+    .footer-mascot { width: 130px; height: auto; filter: drop-shadow(0 6px 16px rgba(0,0,0,0.08)); transform: rotate(-2deg); margin-bottom: 16px; }
+    .footer-text { font-size: 12px; color: var(--text-muted); letter-spacing: 0.15em; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a href="../../index.html" class="nav-brand" title="返回總目錄首頁">
+        <div>
+          <div class="nav-brand-title">雙北貓咖案內所</div>
+          <div class="nav-brand-sub">Taipei Cat Cafe Directory</div>
+        </div>
+      </a>
+      <a href="../../index.html" title="返回首頁">
+        <img src="../../raw/assets/image2.png" alt="探頭賓士貓" class="nav-mascot-peek">
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <div class="hero-label">CURATED THEMATIC GUIDE ｜ 主題特企</div>
+      <div class="hero-title-row">
+        <div>
+          <h1 class="hero-title">雙北適合筆電工作與安靜放鬆的貓咖精選</h1>
+          <span class="hero-title-en">WORK-FRIENDLY & QUIET CAT CAFES IN TAIPEI</span>
+        </div>
+        <img src="../../raw/assets/image3.png" alt="瞇瞇眼捲曲賓士貓" class="hero-mascot-img" title="舒服到快睡著的工作環境">
+      </div>
+      <p class="hero-desc">
+        專為遠距工作者、自由接案者、研究生與需要療癒心靈的個人策劃。我們嚴選插座充足、環境靜謐、平日停留時間寬裕的優質空間，讓您在一邊敲打鍵盤時，身旁總有溫暖的呼嚕聲相伴。
+      </p>
+    </section>
+
+    <!-- Work-Friendly Formula (KaTeX) -->
+    <div class="formula-panel">
+      <div class="formula-title">📐 辦公友善度量化模型 (Work-Friendly Index Model)</div>
+      <div class="formula-content">
+        $$\text{辦公指數 } W = 0.40 \times \text{插座與桌面覆蓋} + 0.30 \times \text{環境安靜與音樂} + 0.30 \times \text{平日時數寬容度}$$
+      </div>
+      <div style="font-size: 12px; color: var(--text-muted); text-align: center;">
+        指標達 4.0 以上即獲選為本專題推薦精選空間。
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>店家名稱</th>
+            <th>行政區 / 捷運站</th>
+            <th>辦公指數</th>
+            <th>插座普及度</th>
+            <th>時間規則</th>
+            <th>氛圍與噪音</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Nekocoffee 貓珈</strong></td>
+            <td>台北中正 ｜ 台北車站 3分</td>
+            <td>⭐⭐⭐⭐☆ (4/5)</td>
+            <td>極充足（附個人PC/按摩椅）</td>
+            <td>計時制彈性自由</td>
+            <td>安靜舒適</td>
+          </tr>
+          <tr>
+            <td><strong>光嶼</strong></td>
+            <td>台北大同 ｜ 圓山站 7分</td>
+            <td>⭐⭐⭐⭐☆ (4/5)</td>
+            <td>部分座位有插座</td>
+            <td>單次 2.5 小時寬裕</td>
+            <td>極安靜老宅獨立風</td>
+          </tr>
+          <tr>
+            <td><strong>朵朵嚐嚐貓咪中途</strong></td>
+            <td>台北松山 ｜ 中山國中站 6分</td>
+            <td>⭐⭐⭐☆☆ (3.5/5)</td>
+            <td>部分座位有插座</td>
+            <td>平日客滿前不限時</td>
+            <td>溫馨舒適（不收12歲以下）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Curated Store 1: Nekocoffee -->
+    <article class="curated-card">
+      <div class="card-top">
+        <span class="card-rank">TOP PICK 01 ｜ 通勤樞紐極致放鬆</span>
+        <span class="card-tag card-tag-dark">工作指數 4.0 / 5.0</span>
+      </div>
+      <h3 class="card-name">Nekocoffee 貓珈</h3>
+      <div class="card-mrt">台北市中正區信陽街 ｜ 捷運台北車站 M8 出口 (步行 3 分鐘)</div>
+
+      <div class="card-tags">
+        <span class="card-tag">計時制收費</span>
+        <span class="card-tag">冷熱飲無限暢飲</span>
+        <span class="card-tag">按摩椅與個人床鋪</span>
+        <span class="card-tag">巨大品種貓</span>
+      </div>
+
+      <p class="card-body">
+        打破傳統咖啡廳框架的複合型休閒空間。店內備有舒適沙發、全身按摩椅、甚至可短暫小憩的床鋪與電腦設備。貓咪陣容涵蓋巨型緬因貓、布偶貓與英國短毛貓。採透明計時收費並附設自助飲料吧，非常適合通勤族在台北車站周遭進行 1~2 小時的高效專注或放鬆充電。
+      </p>
+
+      <div class="card-action">
+        <a href="Nekocoffee_貓珈.html" class="btn-link">查看詳細檔案 ➔</a>
+      </div>
+    </article>
+
+    <!-- Curated Store 2: 光嶼 -->
+    <article class="curated-card">
+      <div class="card-top">
+        <span class="card-rank">TOP PICK 02 ｜ 老街深處靜謐庇護所</span>
+        <span class="card-tag card-tag-dark">工作指數 4.0 / 5.0</span>
+      </div>
+      <h3 class="card-name">光嶼</h3>
+      <div class="card-mrt">台北市大同區哈密街 ｜ 捷運圓山站 2 號出口 (步行約 7 分鐘)</div>
+
+      <div class="card-tags">
+        <span class="card-tag">中途深度領養</span>
+        <span class="card-tag">限時 2.5 小時</span>
+        <span class="card-tag">極度安靜</span>
+        <span class="card-tag">手沖咖啡與好茶</span>
+      </div>
+
+      <p class="card-body">
+        由投入流浪動物救援超過十年的資深主理人經營。空間散發著老派獨立咖啡館的純粹與沉靜，店內生活著數十隻個性溫和的救援米克斯。單次停留長達 2.5 小時，環境背景音極低，客群多輕聲細語，極度適合帶著一本書、筆記本或筆電在此進行深度思考與寫作。出發前請務必確認粉專當週營業公告。
+      </p>
+
+      <div class="card-action">
+        <a href="光嶼.html" class="btn-link">查看詳細檔案 ➔</a>
+      </div>
+    </article>
+
+    <!-- Curated Store 3: 朵朵嚐嚐 -->
+    <article class="curated-card">
+      <div class="card-top">
+        <span class="card-rank">TOP PICK 03 ｜ 定食美味・敦北清幽</span>
+        <span class="card-tag card-tag-dark">工作指數 3.5 / 5.0</span>
+      </div>
+      <h3 class="card-name">朵朵嚐嚐貓咪中途咖啡廳</h3>
+      <div class="card-mrt">台北市松山區敦化北路 ｜ 捷運中山國中站 (步行約 6 分鐘)</div>
+
+      <div class="card-tags">
+        <span class="card-tag">流浪貓中途救援</span>
+        <span class="card-tag">泰式打拋豬與牛丼定食</span>
+        <span class="card-tag">謝絕 12 歲以下</span>
+        <span class="card-tag">平日離峰舒適</span>
+      </div>
+
+      <p class="card-body">
+        收容超過 25 隻親人健康的浪浪，盈餘全數回饋醫療照顧。明確規定不接待 12 歲以下孩童，使得店內維繫了極佳的寧靜秩序。手作家常定食水準媲美專門定食餐館，平日下午離峰時段人潮適中，非常適合在此用餐並沉靜工作。
+      </p>
+
+      <div class="card-action">
+        <a href="朵朵嚐嚐貓咪中途咖啡廳.html" class="btn-link">查看詳細檔案 ➔</a>
+      </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <img src="../../raw/assets/image.png" alt="悠閒側躺賓士貓" class="footer-mascot">
+      <p class="footer-text">
+        © 2026 雙北貓咖案內所 ｜ TAIPEI CAT CAFE DIRECTORY<br>
+        CURATED WITH LLM WIKI PATTERN ｜ DESIGNED FOR PEACE OF MIND
+      </p>
+    </footer>
+
+  </main>
+
+</body>
+</html>

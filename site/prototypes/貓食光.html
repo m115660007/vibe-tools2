@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>貓食光 Time With Cats ｜ 雙北貓咖案內所</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-mist: #F0F1F2;
+      --surface-white: #FFFFFF;
+      --surface-card: #FAFAFA;
+      --border-subtle: #DDE0E2;
+      --text-black: #18191A;
+      --text-charcoal: #4A4E52;
+      --text-muted: #888E94;
+      --accent-tea: #E3E6E2;
+      --accent-tea-text: #3A423B;
+      --font-serif: 'Noto Serif TC', serif;
+      --font-sans: 'Noto Sans TC', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-mist); color: var(--text-charcoal); font-family: var(--font-sans); font-size: 15px; line-height: 1.8; letter-spacing: 0.02em; padding-bottom: 80px; }
+    .container { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+    .site-nav { border-bottom: 1px solid var(--border-subtle); background-color: rgba(240, 241, 242, 0.94); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 50; padding: 16px 0; }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-black); }
+    .nav-brand-title { font-family: var(--font-serif); font-size: 16px; font-weight: 900; letter-spacing: 0.12em; }
+    .nav-brand-sub { font-size: 10px; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; }
+    .nav-mascot-peek { width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.12)); transform: rotate(-3deg); transition: transform 0.3s ease; }
+
+    .hero { margin-top: 48px; margin-bottom: 40px; position: relative; }
+    .hero-label { display: inline-block; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--text-muted); padding-bottom: 2px; margin-bottom: 16px; }
+    .hero-title-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 14px; }
+    .hero-title { font-family: var(--font-serif); font-size: clamp(30px, 5vw, 42px); font-weight: 900; color: var(--text-black); line-height: 1.25; }
+    .hero-title-en { display: block; font-family: var(--font-sans); font-size: 13.5px; font-weight: 400; color: var(--text-muted); letter-spacing: 0.22em; margin-top: 6px; }
+    .hero-mascot-img { width: 140px; height: auto; filter: drop-shadow(0 10px 24px rgba(0,0,0,0.12)); transform: rotate(2deg); flex-shrink: 0; }
+    .hero-desc { font-size: 16px; color: var(--text-charcoal); max-width: 680px; line-height: 1.9; margin-bottom: 24px; }
+
+    .badge-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .badge { font-size: 12px; padding: 4px 12px; background: var(--surface-white); border: 1px solid var(--border-subtle); border-radius: 4px; color: var(--text-black); }
+    .badge-tea { background: var(--accent-tea); color: var(--accent-tea-text); border-color: transparent; font-weight: 500; }
+    .badge-dark { background: var(--text-black); color: #FFF; border-color: var(--text-black); }
+
+    .specs-card { background: var(--surface-white); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 24px 28px; margin-bottom: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .spec-item { display: flex; flex-direction: column; }
+    .spec-title { font-size: 11px; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px; }
+    .spec-value { font-size: 15px; color: var(--text-black); font-weight: 500; }
+
+    .section { background: var(--surface-white); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 36px 36px; margin-bottom: 32px; position: relative; }
+    .section-mascot-header { text-align: center; margin-top: -54px; margin-bottom: 16px; position: relative; z-index: 10; }
+    .mascot-center-sticker { width: 105px; height: auto; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.12)); transform: rotate(-2deg); display: inline-block; }
+    .section-header { display: flex; align-items: baseline; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 14px; margin-bottom: 24px; }
+    .section-num { font-size: 11px; letter-spacing: 0.25em; color: var(--text-muted); font-weight: 500; }
+    .section-title { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: var(--text-black); }
+
+    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+    @media (max-width: 640px) { .card-grid { grid-template-columns: 1fr; } .section { padding: 24px 20px; } }
+    .subcard { background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: 6px; padding: 20px; }
+    .subcard-title { font-family: var(--font-serif); font-size: 16px; font-weight: 600; color: var(--text-black); margin-bottom: 8px; }
+    .subcard-desc { font-size: 13.5px; line-height: 1.7; color: var(--text-charcoal); }
+
+    .site-footer { margin-top: 64px; text-align: center; border-top: 1px solid var(--border-subtle); padding-top: 32px; }
+    .footer-mascot { width: 130px; height: auto; filter: drop-shadow(0 6px 16px rgba(0,0,0,0.08)); transform: rotate(-2deg); margin-bottom: 16px; }
+    .footer-text { font-size: 12px; color: var(--text-muted); letter-spacing: 0.15em; }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a href="../../index.html" class="nav-brand" title="返回總目錄首頁">
+        <div>
+          <div class="nav-brand-title">雙北貓咖案內所</div>
+          <div class="nav-brand-sub">Taipei Cat Cafe Directory</div>
+        </div>
+      </a>
+      <a href="../../index.html" title="返回首頁">
+        <img src="../../raw/assets/image2.png" alt="探頭賓士貓" class="nav-mascot-peek">
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-label">ARCHIVE ISSUE NO. 07 ｜ 台大公館趣味中途</div>
+      <div class="hero-title-row">
+        <div>
+          <h1 class="hero-title">貓食光</h1>
+          <span class="hero-title-en">TIME WITH CATS ｜ GONGGUAN</span>
+        </div>
+        <img src="../../raw/assets/image0.png" alt="端坐賓士貓" class="hero-mascot-img">
+      </div>
+      <p class="hero-desc">
+        坐落於台大公館商圈羅斯福路三段巷內。最負盛名的是擬真逗趣的「貓砂盆造型巧克力蛋糕（附贈迷你小鏟子餐具）」，兼具幽默創意與香濃口感。店內住著常駐貓與待領養中途浪貓，全面現場候位，謝絕12歲以下。
+      </p>
+      <div class="badge-bar">
+        <span class="badge badge-dark">松山新店線</span>
+        <span class="badge badge-tea">捷運公館站 5 分鐘</span>
+        <span class="badge">招牌貓砂盆蛋糕</span>
+        <span class="badge">中途認養愛心</span>
+        <span class="badge">早午餐主食</span>
+        <span class="badge">謝絕 12 歲以下</span>
+      </div>
+    </section>
+
+    <div class="specs-card">
+      <div class="spec-item">
+        <span class="spec-title">行政區 / 捷運</span>
+        <span class="spec-value">台北市大安區 ｜ 公館站 (步行 5 分鐘)</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-title">低消規則</span>
+        <span class="spec-value">每人低消一杯飲品 ｜ 客滿限時 2 小時</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-title">訂位與候位</span>
+        <span class="spec-value">僅接受現場候位（不接受預約）</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-title">寵物政策</span>
+        <span class="spec-value">嚴禁攜帶自家寵物入場</span>
+      </div>
+    </div>
+
+    <section class="section" style="margin-top: 48px;">
+      <div class="section-mascot-header">
+        <img src="../../raw/assets/image5.png" alt="翻肚賓士貓" class="mascot-center-sticker">
+      </div>
+      <div class="section-header">
+        <span class="section-num">01 / HIGHLIGHTS</span>
+        <h2 class="section-title">貓砂盆蛋糕與沉靜相處</h2>
+      </div>
+      <p>
+        採光良好、座位間距舒適。牆面裝設跳板與麻繩柱，貓咪若想休息可隨時返回高處安全區。
+      </p>
+      <div class="card-grid">
+        <div class="subcard">
+          <div class="subcard-title">🥄 招牌貓砂盆蛋糕</div>
+          <div class="subcard-desc">以可可脆酥細碎模擬貓砂顆粒，搭配濕潤濃郁巧克力蛋糕與迷你鐵鏟餐具，拍照打卡趣味滿分。</div>
+        </div>
+        <div class="subcard">
+          <div class="subcard-title">🍳 現做早午餐與燴飯</div>
+          <div class="subcard-desc">不只有甜點，提供豐盛的早午餐盤、香濃飯食主餐，深受公館台大學生與在地常客喜愛。</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">02 / VISIT INFO</span>
+        <h2 class="section-title">交通與造訪建議</h2>
+      </div>
+      <p>
+        <strong>地址：</strong>台北市大安區羅斯福路三段 297 之 1 號 1 樓<br>
+        <strong>捷運：</strong>公館站 3 號出口步行約 5 分鐘<br>
+        <strong>建議時段：</strong>假日採全現場候位，想避開排隊人潮建議於開門營業時段抵達。
+      </p>
+    </section>
+
+    <footer class="site-footer">
+      <img src="../../raw/assets/image.png" alt="側躺賓士貓" class="footer-mascot">
+      <p class="footer-text">© 2026 雙北貓咖案內所 ｜ TAIPEI CAT CAFE DIRECTORY</p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nekocoffee 貓珈 ｜ 雙北貓咖案內所</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+
+  <style>
+    :root {
+      --bg-mist: #F0F1F2;
+      --surface-white: #FFFFFF;
+      --surface-card: #FAFAFA;
+      --border-subtle: #DDE0E2;
+      --text-black: #18191A;
+      --text-charcoal: #4A4E52;
+      --text-muted: #888E94;
+      --accent-tea: #E3E6E2;
+      --accent-tea-text: #3A423B;
+      --font-serif: 'Noto Serif TC', serif;
+      --font-sans: 'Noto Sans TC', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-mist); color: var(--text-charcoal); font-family: var(--font-sans); font-size: 15px; line-height: 1.8; letter-spacing: 0.02em; padding-bottom: 80px; }
+    .container { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+    .site-nav { border-bottom: 1px solid var(--border-subtle); background-color: rgba(240, 241, 242, 0.94); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 50; padding: 16px 0; }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-black); }
+    .nav-brand-title { font-family: var(--font-serif); font-size: 16px; font-weight: 900; letter-spacing: 0.12em; }
+    .nav-brand-sub { font-size: 10px; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; }
+    .nav-mascot-peek { width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.12)); transform: rotate(-3deg); transition: transform 0.3s ease; }
+
+    .hero { margin-top: 48px; margin-bottom: 40px; position: relative; }
+    .hero-label { display: inline-block; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--text-muted); padding-bottom: 2px; margin-bottom: 16px; }
+    .hero-title-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 14px; }
+    .hero-title { font-family: var(--font-serif); font-size: clamp(32px, 5vw, 44px); font-weight: 900; color: var(--text-black); line-height: 1.25; }
+    .hero-title-en { display: block; font-family: var(--font-sans); font-size: 13.5px; font-weight: 400; color: var(--text-muted); letter-spacing: 0.22em; margin-top: 6px; }
+    .hero-mascot-img { width: 140px; height: auto; filter: drop-shadow(0 10px 24px rgba(0,0,0,0.12)); transform: rotate(2deg); flex-shrink: 0; }
+    .hero-desc { font-size: 16px; color: var(--text-charcoal); max-width: 680px; line-height: 1.9; margin-bottom: 24px; }
+
+    .badge-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .badge { font-size: 12px; padding: 4px 12px; background: var(--surface-white); border: 1px solid var(--border-subtle); border-radius: 4px; color: var(--text-black); }
+    .badge-tea { background: var(--accent-tea); color: var(--accent-tea-text); border-color: transparent; font-weight: 500; }
+    .badge-dark { background: var(--text-black); color: #FFF; border-color: var(--text-black); }
+
+    .specs-card { background: var(--surface-white); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 24px 28px; margin-bottom: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .spec-item { display: flex; flex-direction: column; }
+    .spec-title { font-size: 11px; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px; }
+    .spec-value { font-size: 15px; color: var(--text-black); font-weight: 500; }
+
+    .section { background: var(--surface-white); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 36px 36px; margin-bottom: 32px; position: relative; }
+    .section-mascot-header { text-align: center; margin-top: -54px; margin-bottom: 16px; position: relative; z-index: 10; }
+    .mascot-center-sticker { width: 105px; height: auto; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.12)); transform: rotate(-2deg); display: inline-block; }
+    .section-header { display: flex; align-items: baseline; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 14px; margin-bottom: 24px; }
+    .section-num { font-size: 11px; letter-spacing: 0.25em; color: var(--text-muted); font-weight: 500; }
+    .section-title { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: var(--text-black); }
+
+    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+    @media (max-width: 640px) { .card-grid { grid-template-columns: 1fr; } .section { padding: 24px 20px; } }
+    .subcard { background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: 6px; padding: 20px; }
+    .subcard-title { font-family: var(--font-serif); font-size: 16px; font-weight: 600; color: var(--text-black); margin-bottom: 8px; }
+    .subcard-desc { font-size: 13.5px; line-height: 1.7; color: var(--text-charcoal); }
+
+    .site-footer { margin-top: 64px; text-align: center; border-top: 1px solid var(--border-subtle); padding-top: 32px; }
+    .footer-mascot { width: 130px; height: auto; filter: drop-shadow(0 6px 16px rgba(0,0,0,0.08)); transform: rotate(-2deg); margin-bottom: 16px; }
+    .footer-text { font-size: 12px; color: var(--text-muted); letter-spacing: 0.15em; }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a href="../../index.html" class="nav-brand" title="返回總目錄首頁">
+        <div>
+          <div class="nav-brand-title">雙北貓咖案內所</div>
+          <div class="nav-brand-sub">Taipei Cat Cafe Directory</div>
+        </div>
+      </a>
+      <a href="../../index.html" title="返回首頁">
+        <img src="../../raw/assets/image2.png" alt="探頭賓士貓" class="nav-mascot-peek">
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-label">ARCHIVE ISSUE NO. 05 ｜ 北車休閒複合館</div>
+      <div class="hero-title-row">
+        <div>
+          <h1 class="hero-title">Nekocoffee 貓珈</h1>
+          <span class="hero-title-en">RELAXATION & MULTIFUNCTIONAL CAT LOUNGE</span>
+        </div>
+        <img src="../../raw/assets/image0.png" alt="端坐賓士貓" class="hero-mascot-img">
+      </div>
+      <p class="hero-desc">
+        坐落於台北車站補習街信陽街二樓。將「貓咪咖啡廳」與「個人休息室」完美融合，配備按摩椅、個人躺床、漫畫牆、Switch 與電腦。常駐緬因、布偶與英短，附設自助冷熱飲料吧無限暢飲。
+      </p>
+      <div class="badge-bar">
+        <span class="badge badge-dark">淡水信義 / 板南線</span>
+        <span class="badge badge-tea">捷運台北車站 M8 出口 3 分鐘</span>
+        <span class="badge">工作指數 4.0</span>
+        <span class="badge">插座充足・個人PC</span>
+        <span class="badge">按摩椅與床鋪</span>
+        <span class="badge">飲料吧無限暢飲</span>
+      </div>
+    </section>
+
+    <div class="specs-card">
+      <div class="spec-item">
+        <span class="spec-title">行政區 / 捷運</span>
+        <span class="spec-value">台北市中正區 ｜ 台北車站 M8 (3分)</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-title">計費與暢飲</span>
+        <span class="spec-value">計時制收費（含冷熱飲自助吧無限暢飲）</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-title">學生專屬優惠</span>
+        <span class="spec-value">12~18歲出示學生證滿100分享 6 折優惠</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-title">工作與筆電友善</span>
+        <span class="spec-value">⭐⭐⭐⭐☆ (4/5) 插座充足、環境靜謐</span>
+      </div>
+    </div>
+
+    <section class="section" style="margin-top: 48px;">
+      <div class="section-mascot-header">
+        <img src="../../raw/assets/image5.png" alt="翻肚賓士貓" class="mascot-center-sticker">
+      </div>
+      <div class="section-header">
+        <span class="section-num">01 / AMENITIES</span>
+        <h2 class="section-title">全方位複合式放鬆設備</h2>
+      </div>
+      <p>
+        有別於傳統只能坐著喝咖啡的空間，貓珈讓客人能隨心所欲地躺著看漫畫、打電動、小睡或插上筆電工作，貓咪則自在漫步於床頭與鍵盤旁。
+      </p>
+      <div class="card-grid">
+        <div class="subcard">
+          <div class="subcard-title">💆 按摩椅與躺床配置</div>
+          <div class="subcard-desc">逛街累了或長時間工作肩頸緊繃時，可坐上全身按摩椅，讓溫柔貓咪跳上大腿陪坐。</div>
+        </div>
+        <div class="subcard">
+          <div class="subcard-title">🎮 娛樂與個人電腦</div>
+          <div class="subcard-desc">備有整面漫畫書牆、Switch 遊戲機與可供文書處理的電腦設備，插座極為充足。</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">02 / VISIT INFO</span>
+        <h2 class="section-title">交通與營業指引</h2>
+      </div>
+      <p>
+        <strong>地址：</strong>台北市中正區信陽街 9 號 2 樓<br>
+        <strong>捷運：</strong>台北車站 M8 出口步行約 3 分鐘<br>
+        <strong>特色貓種：</strong>緬因貓、布偶貓、挪威森林貓、英國短毛貓
+      </p>
+    </section>
+
+    <footer class="site-footer">
+      <img src="../../raw/assets/image.png" alt="側躺賓士貓" class="footer-mascot">
+      <p class="footer-text">© 2026 雙北貓咖案內所 ｜ TAIPEI CAT CAFE DIRECTORY</p>
+    </footer>
+  </main>
+</body>
+</html>
