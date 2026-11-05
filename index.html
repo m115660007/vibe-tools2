@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雙北貓咖案內所 ｜ Taipei Cat Cafe Directory</title>
+
+  <!-- Google Fonts: Noto Serif TC (日雜襯線) & Noto Sans TC (現代無襯線) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;900&display=swap" rel="stylesheet">
+
+  <!-- KaTeX for LaTeX Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+
+  <style>
+    :root {
+      --bg-mist: #F0F1F2;
+      --surface-white: #FFFFFF;
+      --surface-card: #FAFAFA;
+      --border-subtle: #DDE0E2;
+      --border-dark: #18191A;
+      --text-black: #18191A;
+      --text-charcoal: #4A4E52;
+      --text-muted: #888E94;
+      --accent-tea: #E3E6E2;
+      --accent-tea-text: #3A423B;
+      --font-serif: 'Noto Serif TC', serif;
+      --font-sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-mist);
+      color: var(--text-charcoal);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Site Navigation */
+    .site-nav {
+      border-bottom: 1px solid var(--border-subtle);
+      background-color: rgba(240, 241, 242, 0.94);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 16px 0;
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-black);
+    }
+    .nav-brand-title {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+    }
+    .nav-brand-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .nav-mascot-peek {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.12));
+      transform: rotate(-3deg);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .nav-mascot-peek:hover {
+      transform: rotate(5deg) scale(1.12);
+    }
+
+    /* Hero */
+    .hero {
+      margin-top: 56px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .hero-label {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--text-muted);
+      padding-bottom: 2px;
+      margin-bottom: 18px;
+    }
+    .hero-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(34px, 5.5vw, 48px);
+      font-weight: 900;
+      color: var(--text-black);
+      line-height: 1.25;
+      letter-spacing: 0.05em;
+    }
+    .hero-title-en {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.22em;
+      margin-top: 6px;
+    }
+    .hero-mascot-img {
+      width: 145px;
+      height: auto;
+      filter: drop-shadow(0 10px 24px rgba(0,0,0,0.12));
+      transform: rotate(2deg);
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .hero-desc {
+      font-size: 16px;
+      color: var(--text-charcoal);
+      max-width: 720px;
+      line-height: 1.95;
+      margin-bottom: 28px;
+    }
+
+    /* Stat & Method Bar */
+    .stat-bar {
+      background: var(--surface-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .stat-num {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--text-black);
+      line-height: 1.2;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .stat-formula-row {
+      grid-column: 1 / -1;
+      border-top: 1px dashed var(--border-subtle);
+      padding-top: 16px;
+      margin-top: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+    }
+
+    /* Search & Filter Toolbar */
+    .toolbar-box {
+      background: var(--surface-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .toolbar-helper-mascot {
+      position: absolute;
+      right: 24px;
+      top: -38px;
+      width: 76px;
+      height: auto;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.12));
+      transform: rotate(4deg);
+      user-select: none;
+    }
+    .search-input-wrap {
+      margin-bottom: 18px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 12px 18px;
+      font-size: 14.5px;
+      font-family: var(--font-sans);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      background: var(--surface-card);
+      color: var(--text-black);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--text-black);
+      background: #FFF;
+    }
+    .filter-title {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 14px;
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      font-size: 12.5px;
+      color: var(--text-black);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .pill:hover {
+      border-color: var(--text-black);
+    }
+    .pill.active {
+      background: var(--text-black);
+      color: #FFF;
+      border-color: var(--text-black);
+    }
+    .filter-count-status {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 14px;
+      text-align: right;
+    }
+
+    /* Section Headers */
+    .section-title-wrap {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 12px;
+      margin-bottom: 28px;
+      margin-top: 48px;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text-black);
+      letter-spacing: 0.05em;
+    }
+    .section-sub {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* Curated Guide Banner */
+    .guide-banner {
+      background: #18191A;
+      color: #FFF;
+      border-radius: 8px;
+      padding: 32px 36px;
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      position: relative;
+    }
+    .guide-tag {
+      font-size: 10.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.18);
+      padding: 3px 10px;
+      border-radius: 3px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .guide-title {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+    .guide-desc {
+      font-size: 13.5px;
+      color: #B5B9BD;
+      max-width: 580px;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .btn-guide {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFF;
+      color: #18191A;
+      text-decoration: none;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: opacity 0.2s;
+    }
+    .btn-guide:hover { opacity: 0.9; }
+    .guide-mascot-img {
+      width: 110px;
+      height: auto;
+      filter: drop-shadow(0 6px 14px rgba(255,255,255,0.15));
+      transform: rotate(-3deg);
+    }
+    @media (max-width: 640px) {
+      .guide-banner { flex-direction: column; align-items: flex-start; padding: 24px; }
+      .guide-mascot-img { display: none; }
+    }
+
+    /* Featured Prototype Card (Big Hero Card) */
+    .featured-card {
+      background: var(--surface-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 36px 36px;
+      margin-bottom: 36px;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .featured-card:hover {
+      border-color: var(--border-dark);
+      transform: translateY(-2px);
+    }
+    .featured-tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: var(--text-black);
+      color: #FFF;
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .featured-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .featured-mrt {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .featured-desc {
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: var(--text-charcoal);
+      margin-bottom: 24px;
+      max-width: 580px;
+    }
+    .featured-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .card-badge {
+      font-size: 12px;
+      padding: 3px 10px;
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      color: var(--text-charcoal);
+    }
+    .btn-read {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--text-black);
+      color: #FFF;
+      text-decoration: none;
+      padding: 10px 24px;
+      border-radius: 4px;
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      transition: opacity 0.2s ease;
+    }
+    .btn-read:hover {
+      opacity: 0.85;
+    }
+    .featured-mascot {
+      width: 140px;
+      height: auto;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.1));
+      transform: rotate(-3deg);
+      user-select: none;
+    }
+    @media (max-width: 720px) {
+      .featured-card {
+        grid-template-columns: 1fr;
+        padding: 24px;
+      }
+      .featured-mascot {
+        display: none;
+      }
+    }
+
+    /* Grid of Archive Stores */
+    .store-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 20px;
+    }
+    .store-card {
+      background: var(--surface-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+    .store-card:hover {
+      border-color: var(--text-black);
+      transform: translateY(-2px);
+    }
+    .store-card-header {
+      margin-bottom: 12px;
+    }
+    .store-status-pill {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 3px;
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    .store-name {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+    .store-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .store-summary {
+      font-size: 13px;
+      color: var(--text-charcoal);
+      line-height: 1.7;
+      margin: 12px 0 16px 0;
+      flex-grow: 1;
+    }
+    .store-bottom {
+      border-top: 1px dashed var(--border-subtle);
+      padding-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .store-tag-mini {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .link-proto {
+      font-size: 12.5px;
+      color: var(--text-black);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      background: #FFF;
+      transition: all 0.2s;
+    }
+    .link-proto:hover {
+      background: var(--text-black);
+      color: #FFF;
+      border-color: var(--text-black);
+    }
+
+    /* Footer */
+    .site-footer {
+      margin-top: 64px;
+      text-align: center;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 36px;
+    }
+    .footer-mascot {
+      width: 130px;
+      height: auto;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.08));
+      transform: rotate(-2deg);
+      margin-bottom: 16px;
+    }
+    .footer-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand">
+        <div>
+          <div class="nav-brand-title">雙北貓咖案內所</div>
+          <div class="nav-brand-sub">Taipei Cat Cafe Directory</div>
+        </div>
+      </a>
+      <a href="index.html" title="見習店長賓士貓">
+        <img src="raw/assets/image2.png" alt="探頭賓士貓" class="nav-mascot-peek">
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-label">TAIPEI FELINE CAFE ARCHIVE ｜ 2026 EDITION</div>
+      
+      <div class="hero-title-row">
+        <div>
+          <h1 class="hero-title">雙北貓咖案內所</h1>
+          <span class="hero-title-en">A CURATED ARCHIVE OF TAIPEI FELINE CAFES</span>
+        </div>
+        <img src="raw/assets/image0.png" alt="端坐賓士貓" class="hero-mascot-img">
+      </div>
+
+      <p class="hero-desc">
+        收錄雙北捷運沿線與特色行政區的精選貓咪咖啡廳。我們嚴格紀錄真實低消、限時規則、捷運步行時間與貓咪親人程度，隨時為您備好下一個療癒的午後。
+      </p>
+
+      <!-- Stats Bar with KaTeX -->
+      <div class="stat-bar">
+        <div class="stat-item">
+          <span class="stat-num">13 間</span>
+          <span class="stat-label">已建檔實體貓咖</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">12 份</span>
+          <span class="stat-label">日雜版型已出刊</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">5 線</span>
+          <span class="stat-label">雙北捷運核心路網</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">日系洗練冷灰美學</span>
+        </div>
+
+        <div class="stat-formula-row">
+          <span>📐 評選推薦指標權重模型 (KaTeX)：</span>
+          <span>$$\text{綜合推薦權重 } R = 0.35 \times \text{貓咪親人度} + 0.30 \times \text{低消透明度} + 0.20 \times \text{捷運便利} + 0.15 \times \text{環境舒適}$$</span>
+        </div>
+      </div>
+
+      <!-- Curated Guide Banner -->
+      <div class="guide-banner">
+        <div>
+          <span class="guide-tag">SPECIAL ISSUE ｜ 主題特企店家推薦</span>
+          <h3 class="guide-title">雙北適合筆電工作與安靜放鬆的貓咖精選</h3>
+          <p class="guide-desc">
+            針對插座覆蓋率、安靜程度與平日時間寬容度綜合評選。精選台北車站 Nekocoffee、圓山光嶼與敦北朵朵嚐嚐，讓呼嚕聲陪伴專注午後。
+          </p>
+          <a href="site/prototypes/雙北工作與安靜放鬆貓咖精選.html" class="btn-guide">
+            <span>閱讀主題特企店家</span>
+            <span>➔</span>
+          </a>
+        </div>
+        <img src="raw/assets/image3.png" alt="瞇眼賓士貓" class="guide-mascot-img">
+      </div>
+
+      <!-- Real-time Search & Filter Toolbar -->
+      <div class="toolbar-box">
+        <img src="raw/assets/image7.png" alt="穿紅毛衣賓士貓" class="toolbar-helper-mascot" title="有想找什麼樣的貓咖嗎？">
+        
+        <div class="search-input-wrap">
+          <input type="text" id="searchInput" class="search-input" placeholder="🔍 搜尋店名、捷運站、行政區或特色關鍵字（如：緬因貓、赤峰街、西門、定食、中途）...">
+        </div>
+
+        <div class="filter-title">TOPIC FILTERS ｜ 主題即時篩選</div>
+        <div class="pill-list" id="pillContainer">
+          <span class="pill active" data-filter="all">全部收錄 (12)</span>
+          <span class="pill" data-filter="giant">巨大品種貓</span>
+          <span class="pill" data-filter="rescue">中途領養 / 浪浪</span>
+          <span class="pill" data-filter="mrt5">捷運 5 分鐘內</span>
+          <span class="pill" data-filter="work">適合筆電工作</span>
+          <span class="pill" data-filter="food">特色餐點與甜點</span>
+        </div>
+
+        <div class="filter-count-status" id="filterStatus">顯示全部 12 間活躍店家</div>
+      </div>
+    </section>
+
+    <!-- Featured Single Cafe -->
+    <div class="section-title-wrap" id="featured">
+      <h2 class="section-title">本期特選探店 ｜ FEATURED ISSUE</h2>
+      <span class="section-sub">ISSUE NO. 01</span>
+    </div>
+
+    <article class="featured-card">
+      <div>
+        <span class="featured-tag">赤峰街文青藝廊風</span>
+        <h3 class="featured-title">紅玥緬因貓藝廊 RED MOON</h3>
+        <div class="featured-mrt">台北市大同區赤峰街 ｜ 捷運雙連站 1 號出口 (步行 4 分鐘)</div>
+        <p class="featured-desc">
+          藏身於赤峰街文青巷弄，以法式拱門與席地座席，打造人與溫和「巨型緬因貓」平視相伴的純白藝廊空間。提供義式正餐與蜂蜜起司點心，享受被長毛巨貓環繞的極致療癒。
+        </p>
+
+        <div class="featured-badges">
+          <span class="card-badge">十多隻緬因貓</span>
+          <span class="card-badge">席地平視座席</span>
+          <span class="card-badge">低消 400元+10%</span>
+          <span class="card-badge">限時 90分鐘</span>
+          <span class="card-badge">建議提前預約</span>
+        </div>
+
+        <a href="site/prototypes/紅玥緬因貓藝廊.html" class="btn-read">
+          <span>閱讀完整店家介紹</span>
+          <span>➔</span>
+        </a>
+      </div>
+
+      <img src="raw/assets/image1.png" alt="伸手肉球賓士貓" class="featured-mascot">
+    </article>
+
+    <!-- Grid of Archive Stores -->
+    <div class="section-title-wrap" id="store-list">
+      <h2 class="section-title">雙北貓咪咖啡廳名冊 ｜ STORE ARCHIVE</h2>
+      <span class="section-sub">COMPLETE DIRECTORY</span>
+    </div>
+
+    <div class="store-grid" id="storeGrid">
+
+      <!-- Store 1: 紅玥緬因貓藝廊 -->
+      <div class="store-card" data-tags="giant mrt5 food" data-keywords="紅玥緬因貓藝廊 緬因貓 雙連站 赤峰街 大同區 布偶貓 德文 義大利麵">
+        <div class="store-card-header">
+          <span class="store-status-pill">赤峰街藝廊風</span>
+          <h4 class="store-name">紅玥緬因貓藝廊</h4>
+          <div class="store-meta">台北大同 ｜ 雙連站 4 分鐘</div>
+        </div>
+        <p class="store-summary">十多隻巨型長毛緬因貓駐店，純白法式拱門與低矮席地座席，人和貓咪自然平視相處。</p>
+        <div class="store-bottom">
+          <span class="store-tag-mini">巨大品種貓・預約制</span>
+          <a href="site/prototypes/紅玥緬因貓藝廊.html" class="link-proto">查看店家 ➔</a>
+        </div>
+      </div>
+
+      <!-- Store 2: FUFU Cat Cafe -->
+      <div class="store-card" data-tags="giant mrt5" data-keywords="FUFU Cat Cafe 西門站 萬華區 品種貓 無毛貓 緬因貓 布偶貓 計時制">
+        <div class="store-card-header">
+          <span class="store-status-pill">20+ 隻品種貓</span>
+          <h4 class="store-name">FUFU Cat Cafe</h4>
+          <div class="store-meta">台北萬華 ｜ 西門站 5 分鐘</div>
+        </div>
+        <p class="store-summary">西門町鬧區二樓，加拿大無毛貓、東方短毛貓與巨型緬因貓齊聚，計時暢飲上限 550 元。</p>
+        <div class="store-bottom">
+          <span class="store-tag-mini">計時暢飲・西門町</span>
+          <a href="site/prototypes/FUFU_Cat_Cafe.html" class="link-proto">查看店家 ➔</a>
+        </div>
+      </div>
+
+      <!-- Store 3: 小貓花園 -->
+      <div class="store-card" data-tags="rescue mrt5 food" data-keywords="小貓花園 芝山站 士林區 金氏紀錄 最老貓咖 貓狗 老宅 義大利麵 鬆餅">
+        <div class="store-card-header">
+          <span class="store-status-pill">金氏紀錄最老貓咖</span>
+          <h4 class="store-name">小貓花園 Kitten Garden</h4>
+          <div class="store-meta">台北士林 ｜ 芝山站 1 分鐘</div>
+        </div>
+        <p class="store-summary">1998年開業，金氏紀錄認證現存營運最久貓咖。木質藤椅老咖啡館風，12隻貓與2隻狗同住。</p>
+        <div class="store-bottom">
+          <span class="store-tag-mini">中途浪浪・出站即達</span>
+          <a href="site/prototypes/小貓花園.html" class="link-proto">查看店家 ➔</a>
+        </div>
+      </div>
+
+      <!-- Store 4: Nekocoffee 貓珈 -->
+      <div class="store-card" data-tags="giant mrt5 work" data-keywords="Nekocoffee 貓珈 台北車站 中正區 按摩椅 床鋪 漫畫 Switch 工作 筆電 緬因貓">
+        <div class="store-card-header">
+          <span class="store-status-pill">休閒複合館・工作友善</span>
+          <h4 class="store-name">Nekocoffee 貓珈</h4>
+          <div class="store-meta">台北中正 ｜ 台北車站 3 分鐘</div>
+        </div>
+        <p class="store-summary">北車信陽街二樓，配備按摩椅、個人床鋪、Switch 與電腦。常駐緬因與英短，計時暢飲。</p>
+        <div class="store-bottom">
+          <span class="store-tag-mini">工作指數 4.0・插座足</span>
+          <a href="site/prototypes/Nekocoffee_貓珈.html" class="link-proto">查看店家 ➔</a>
+        </div>
+      </div>
+
+      <!-- Store 5: 朵朵嚐嚐貓咪中途 -->
+      <div class="store-card" data-tags="rescue work food" data-keywords="朵朵嚐嚐 貓咪中途 中山國中站 松山區 定食 打拋豬 牛丼 米克斯 救助 醫療">
+        <div class="store-card-header">
+          <span class="store-status-pill">中途愛心・定食美味</span>
+          <h4 class="store-name">朵朵嚐嚐貓咪中途</h4>
+          <div class="store-meta">台北松山 ｜ 中山國中站 6 分鐘</div>
+        </div>
+        <p class="store-summary">25隻親人健康米克斯，泰式打拋豬與私房牛丼定食水準高，盈餘投入救助，謝絕12歲以下。</p>
+        <div class="store-bottom">
+          <span class="store-tag-mini">中途認養・家常定食</span>
+          <a href="site/prototypes/朵朵嚐嚐貓咪中途咖啡廳.html" class="link-proto">查看店家 ➔</a>
+        </div>
+      </div>
+
+      <!-- Store 6: 貓食光 Time With Cats -->
+      <div class="store-card" data-tags="rescue mrt5 food" data-keywords="貓食光 公館站 大安區 台大 貓砂盆蛋糕 巧克力 早午餐 中途 米克斯">
+        <div class="store-card-header">
+          <span class="store-status-pill">台大公館・趣味甜點</span>
+          <h4 class="store-name">貓食光 Time With Cats</h4>
+          <div class="store-meta">台北大安 ｜ 公館站 5 分鐘</div>
+        </div>
+        <p class="store-summary">台大商圈超人氣中途，擬真「貓砂盆巧克力蛋糕（附小鏟子餐具）」趣味十足，全現場候位。</p>
+        <div class="store-bottom">
+          <span class="store-tag-mini">特色甜點・中途認養</span>
+          <a href="site/prototypes/貓食光.html" class="link-proto">查看店家 ➔</a>
+        </div>
+      </div>
+
+      <!-- Store 7: 肉球森林 -->
+      <div class="store-card" data-tags="mrt5 food" data-keywords="肉球森林 東門站 中正區 狐獴 大嘴鳥 義大利麵 燉飯 漢堡 預約制 體驗">
+        <div class="store-card-header">
+          <span class="store-status-pill">特殊野生與家養動物</span>
+          <h4 class="store-name">肉球森林 Paws Forest</h4>
+          <div class="store-meta">台北中正 ｜ 東門站 3 分鐘</div>
+        </div>
+        <p class="store-summary">7隻漫步貓咪搭配狐獴與巨嘴鳥分組引導體驗，提供水準極佳的現做義麵與燉飯料理。</p>
+        <div class="store-bottom">
+          <span class="store-tag-mini">狐獴大嘴鳥・美味正餐</span>
+          <a href="site/prototypes/肉球森林.html" class="link-proto">查看店家 ➔</a>
+        </div>
+      </div>
+
+      <!-- Store 8: 擼LALA Sweets 松菸店 -->
+      <div class="store-card" data-tags="giant food" data-keywords="擼LALA Sweets 松菸店 市政府站 國父紀念館 信義區 挪威森林貓 曼赤肯 貓掌馬卡龍 千層蛋糕">
+        <div class="store-card-header">
+          <span class="store-status-pill">松菸文創・日系甜點</span>
+          <h4 class="store-name">擼LALA Sweets 松菸店</h4>
+          <div class="store-meta">台北信義 ｜ 市政府站 6 分鐘</div>
+        </div>
+        <p class="store-summary">40坪原木優雅空間，挪威森林貓與短腿曼赤肯，手工自製貓掌馬卡龍與法式千層蛋糕。</p>
+        <div class="store-bottom">
+          <span class="store-tag-mini">精緻甜點・品種巨貓</span>
+          <a href="site/prototypes/擼LALA_Sweets_松菸店.html" class="link-proto">查看店家 ➔</a>
+        </div>
+      </div>
+
+      <!-- Store 9: 光嶼 -->
+      <div class="store-card" data-tags="rescue work" data-keywords="光嶼 圓山站 大同區 哈密街 大龍峒 街貓 救助 十年 安靜 手沖 工作 筆電">
+        <div class="store-card-header">
+          <span class="store-status-pill">極度安靜・十年救援</span>
+          <h4 class="store-name">光嶼</h4>
+          <div class="store-meta">台北大同 ｜ 圓山站 7 分鐘</div>
+        </div>
+        <p class="store-summary">十年資深救援主理人，數十隻中途浪浪安靜隨行。獨立老派咖啡館風格，限時2.5小時寬裕。</p>
+        <div class="store-bottom">
+          <span class="store-tag-mini">極安靜・工作指數 4.0</span>
+          <a href="site/prototypes/光嶼.html" class="link-proto">查看店家 ➔</a>
+        </div>
+      </div>
+
+      <!-- Store 10: NUKU NUKU Cat Cafe -->
+      <div class="store-card" data-tags="rescue mrt5" data-keywords="NUKU NUKU Cat Cafe 西門站 萬華區 漢口街 三層樓 垂直動線 中途 領養 計時制">
+        <div class="store-card-header">
+          <span class="store-status-pill">三層樓立體動線</span>
+          <h4 class="store-name">NUKU NUKU Cat Cafe</h4>
+          <div class="store-meta">台北萬華 ｜ 西門站 5 分鐘</div>
+        </div>
+        <p class="store-summary">2025新址漢口街，2至4樓三層開闊動線，部分中途待認養，客人可自由跨層尋找投緣貓咪。</p>
+        <div class="store-bottom">
+          <span class="store-tag-mini">大空間・中途送養</span>
+          <a href="site/prototypes/NUKU_NUKU_Cat_Cafe.html" class="link-proto">查看店家 ➔</a>
+        </div>
+      </div>
+
+      <!-- Store 11: 転運棧貓咪中途 -->
+      <div class="store-card" data-tags="rescue food" data-keywords="転運棧 貓咪中途 中山站 大同區 天水路 義大利麵 燉飯 認養 家訪 二樓席地 三樓貓道">
+        <div class="store-card-header">
+          <span class="store-status-pill">天水路多層中途</span>
+          <h4 class="store-name">転運棧貓咪中途咖啡廳</h4>
+          <div class="store-meta">台北大同 ｜ 中山站 10 分鐘</div>
+        </div>
+        <p class="store-summary">20多隻救援中途貓咪，二樓低桌席地、三樓高空貓道。現點現做美味義麵燉飯，嚴謹審查。</p>
+        <div class="store-bottom">
+          <span class="store-tag-mini">中途認養・義麵燉飯</span>
+          <a href="site/prototypes/転運棧貓咪中途咖啡廳.html" class="link-proto">查看店家 ➔</a>
+        </div>
+      </div>
+
+      <!-- Store 12: 咪可思啾啾堡 -->
+      <div class="store-card" data-tags="rescue mrt5 food" data-keywords="咪可思啾啾堡 菜寮站 三重區 新北 台灣流浪貓中途協會 早午餐 漢堡 親子 挑高空間">
+        <div class="store-card-header">
+          <span class="store-status-pill">台灣流浪貓中途協會直營</span>
+          <h4 class="store-name">咪可思啾啾堡</h4>
+          <div class="store-meta">新北三重 ｜ 菜寮站 5 分鐘</div>
+        </div>
+        <p class="store-summary">官方協會直營餐廳，挑高大空間通風明亮，份量充沛美式早午餐漢堡，親子友善生命教育。</p>
+        <div class="store-bottom">
+          <span class="store-tag-mini">協會直營・大份量餐</span>
+          <a href="site/prototypes/咪可思啾啾堡.html" class="link-proto">查看店家 ➔</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div>
+        <img src="raw/assets/image.png" alt="側躺賓士貓" class="footer-mascot">
+      </div>
+      <p class="footer-text">
+        © 2026 雙北貓咖案內所 ｜ TAIPEI CAT CAFE ARCHIVE<br>
+        DESIGNED IN JAPANESE EDITORIAL & MONOTONE STYLE ｜ WITH LOVE FOR CATS
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- Client-side Interactive Filter & Search Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById('searchInput');
+      const pillContainer = document.getElementById('pillContainer');
+      const pills = pillContainer.querySelectorAll('.pill');
+      const storeCards = document.querySelectorAll('#storeGrid .store-card');
+      const filterStatus = document.getElementById('filterStatus');
+
+      let currentCategory = 'all';
+      let currentQuery = '';
+
+      function updateFilter() {
+        let visibleCount = 0;
+        const q = currentQuery.trim().toLowerCase();
+
+        storeCards.forEach(card => {
+          const tags = card.getAttribute('data-tags') || '';
+          const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+          const text = card.textContent.toLowerCase();
+
+          // Category match
+          const matchesCategory = (currentCategory === 'all') || tags.includes(currentCategory);
+          // Query match
+          const matchesQuery = !q || keywords.includes(q) || text.includes(q);
+
+          if (matchesCategory && matchesQuery) {
+            card.style.display = 'flex';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        filterStatus.textContent = `共篩選出 ${visibleCount} 間符合條件之貓咖店家`;
+      }
+
+      // Pill click
+      pills.forEach(pill => {
+        pill.addEventListener('click', function() {
+          pills.forEach(p => p.classList.remove('active'));
+          this.classList.add('active');
+          currentCategory = this.getAttribute('data-filter');
+          updateFilter();
+        });
+      });
+
+      // Search input
+      searchInput.addEventListener('input', function(e) {
+        currentQuery = e.target.value;
+        updateFilter();
+      });
+    });
+  </script>
+
+</body>
+</html>
